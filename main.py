@@ -49,7 +49,7 @@ try:
                     
     Не отправляйте стикеры, голосовые сообщения и другие медиафайлы 🔇
                     """
-        bot_picture = open("botpic.jpg", 'rb')
+        bot_picture = open("img/bot_pic.jpg", 'rb')
         await msg.answer_photo(photo=bot_picture, caption=text_salam, reply_markup=main)
 except Exception as startErr:
     # Обработка ошибки, если возникает проблема при выполнении команды /start
@@ -59,7 +59,7 @@ try:
     # Обработчик нажатия кнопки "ℹ️Инструкция"
     @dp.message_handler(text='ℹ️Инструкция')
     async def cmd_instructions(msg: types.Message):
-        logo = open('Rule.jpg', 'rb')
+        logo = open('img/Rule.jpg', 'rb')
         info_text = """
     Пример запроса:
                     
@@ -105,7 +105,7 @@ try:
         await bot.forward_message(-1001792269419, msg.from_user.id, msg.message_id, msg.from_user.first_name)
         print(msg.text.split(' '))
         # Отправка видео и уведомления о времени обработки заявки
-        await bot.send_video(msg.chat.id, open('Gifask.gif', 'rb'),
+        await bot.send_video(msg.chat.id, open('img/Gif_ask.gif', 'rb'),
                              caption="🤖Ваша заявка будет обработана в течение 15 минут!!!🤖")
         list_accept = []
         for i in msg.text.split():
