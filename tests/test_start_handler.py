@@ -1,0 +1,16 @@
+from handlers.start_handler import process_start_command
+import pytest
+from aiogram import types
+import sys
+import os
+import datetime
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+@pytest.mark.asyncio
+async def test_process_start_command():
+    msg = types.Message(message_id=1, from_user=types.User(id=123, is_bot=False, first_name='TestUser'),
+                        chat=types.Chat(id=1, type='private'), date=int(datetime.datetime.now().timestamp()), text='/start')
+    response = await process_start_command(msg)
+    assert response is None
